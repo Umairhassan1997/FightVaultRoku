@@ -64,101 +64,36 @@ sub navBarInit(screenName as String)
 end sub
 
 sub ShowSearchScreen()
-    
-     if m.scene.isSubscribed=false and m.global.appLaunchCount>m.scene.AppLimit
-               ShowDialogToUser()
-            else
     m.scene.callFunc("ShowSearchScreen")
-
-            end if
     m.btnSearchN.unobserveField("buttonSelected")
-
 end sub
+
 sub ShowHomeScreen()
-     if m.scene.isSubscribed=false and m.global.appLaunchCount>m.scene.AppLimit
-                ShowDialogToUser()
-
-            else
     m.scene.callFunc("ShowHomeScreen")
-
-            end if
     m.btnHomeN.unobserveField("buttonSelected")
-
 end sub
+
 sub ShowPlaylistScreen()
-     if m.scene.isSubscribed=false and m.global.appLaunchCount>m.scene.AppLimit
-               ShowDialogToUser()
-
-            else
-
     m.scene.callFunc("ShowPlaylistScreen")
-
-            end if
     m.btnPlaylistN.unobserveField("buttonSelected")
-
 end sub
 
 sub ShowFavoriteScreen()
-     if m.scene.isSubscribed=false and m.global.appLaunchCount>m.scene.AppLimit
-               ShowDialogToUser()
-
-            else
     m.scene.callFunc("ShowFavoriteScreen")
-            end if
     m.btnFavN.unobserveField("buttonSelected")
-
 end sub
 
 sub ShowSettingScreen()
     m.scene.callFunc("ShowSettingScreen")
     m.btnSettingN.unobserveField("buttonSelected")
-
 end sub
 
-
-
 sub ShowInputScreen()
-    if m.scene.isSubscribed=false and m.global.appLaunchCount>m.scene.AppLimit
-                ShowDialogToUser()
-
-            else
-    
     m.scene.callFunc("ShowInputNavScreen")
-
-            end if
     m.btnInputN.unobserveField("buttonSelected")
-
 end sub
 
 sub ShowMenuScreen()
-
     m.scene.callFunc("ShowMenuScreen")
     m.btnHomeN.unobserveField("buttonSelected")
-
-end sub
-
-sub ShowSubscriptionScreen()
-    ?"dialog55"m.subscriptionDialog
-if m.subscriptionDialog.buttonSelected=0
-
-        m.subscriptionDialog.close=true
-    m.scene.callFunc("ShowSubscriptionScreen")
-
-end if
-
-
-end sub
-
-sub ShowDialogToUser()
-    m.subscriptionDialog = createObject("roSGNode", "StandardMessageDialog")
-    m.subscriptionDialog.title = "Subscribe Now to Watch"
-    m.subscriptionDialog.message = ["You need subscription to Continue Watching these channels."]
-    m.subscriptionDialog.buttons = ["OK"]
-
-    ' observe the dialog's buttonSelected field to handle button selections
-    m.subscriptionDialog.observeField("buttonSelected", "ShowSubscriptionScreen")
-
-    m.scene.dialog = m.subscriptionDialog
-
-
 end sub

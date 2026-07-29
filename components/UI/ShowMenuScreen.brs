@@ -12,69 +12,21 @@ sub ShowMenuScreen()
 end sub
 
 sub ValidateandShowRecentScreen()
-         if m.top.isSubscribed=false and m.global.appLaunchCount>m.top.AppLimit
-               showUserDialog()
-
-            else
-                ShowRecentScreen()
-
-            end if
-
-
+    ShowRecentScreen()
 end sub
-
-sub closeDialgAndShowSubScreen()
-          if m.subscriptionDialog.buttonSelected=0
-
-        m.subscriptionDialog.close=true
-        ShowSubscriptionScreen()
-          end if
-
-end sub
-
 
 sub onbtnChannelsSelected()
     m.top.OptionSelected="Channels"
-    ValidateAndLaunchHomeScreen()
-
-
+    ShowHomeScreen()
 end sub
 
 sub onbtnMoviesSelected()
-        m.top.OptionSelected="Movies"
-        ValidateAndLaunchHomeScreen()
-
-
+    m.top.OptionSelected="Movies"
+    ShowHomeScreen()
 end sub
+
 sub onbtnSeriesSelected()
-        m.top.OptionSelected="Series"
-        ValidateAndLaunchHomeScreen()
-
-
-end sub
-
-sub ValidateAndLaunchHomeScreen()
-            if m.top.isSubscribed=false and m.global.appLaunchCount>m.top.AppLimit
-               showUserDialog()
-
-            else
-                ShowHomeScreen()
-
-            end if
-
-
-end sub
-
-sub showUserDialog()
-        m.subscriptionDialog = createObject("roSGNode", "StandardMessageDialog")
-        m.subscriptionDialog.title = "Subscribe Now to Watch"
-        m.subscriptionDialog.message = ["You need subscription to Continue Watching these channels."]
-        m.subscriptionDialog.buttons = ["OK"]
-
-        ' observe the dialog's buttonSelected field to handle button selections
-        m.subscriptionDialog.observeField("buttonSelected", "closeDialgAndShowSubScreen")
-
-        m.top.dialog = m.subscriptionDialog
-
+    m.top.OptionSelected="Series"
+    ShowHomeScreen()
 end sub
 
